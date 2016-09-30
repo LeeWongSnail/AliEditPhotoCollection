@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SystemMethodViewController.h"
 
 @interface ViewController ()
 
@@ -16,15 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
 }
 
+- (IBAction)systemMethod:(UIButton *)sender {
+    SystemMethodViewController *sysVc = [[SystemMethodViewController alloc] init];
+    
+    [self.navigationController pushViewController:sysVc animated:YES];
+}
+
+- (IBAction)customMethod:(UIButton *)sender {
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end
