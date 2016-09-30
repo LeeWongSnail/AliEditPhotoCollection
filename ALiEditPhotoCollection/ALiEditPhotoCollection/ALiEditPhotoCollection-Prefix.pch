@@ -1,0 +1,20 @@
+//
+//  ALiEditPhotoCollection-Prefix.pch
+//  ALiEditPhotoCollection
+//
+//  Created by LeeWong on 2016/9/30.
+//  Copyright © 2016年 LeeWong. All rights reserved.
+//
+
+#ifndef ALiEditPhotoCollection_Prefix_h
+#define ALiEditPhotoCollection_Prefix_h
+
+#define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT    [[UIScreen mainScreen] bounds].size.height
+
+#define WEAKSELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+#import <Masonry.h>
+
+
+#endif /* ALiEditPhotoCollection_Prefix_h */
