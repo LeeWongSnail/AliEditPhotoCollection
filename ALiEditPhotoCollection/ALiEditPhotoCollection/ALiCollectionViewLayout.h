@@ -17,4 +17,6 @@
 
 @interface ALiCollectionViewLayout : UICollectionViewFlowLayout
 @property (nonatomic, assign) id<ALiLayoutDelegate> delegate;
+
+- (void)stop:(UICollectionViewCell *)aView;
 @end

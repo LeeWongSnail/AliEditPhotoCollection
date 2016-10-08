@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSMutableArray *images;
 
+@property (nonatomic, strong)  ALiCollectionViewLayout *layout;
+
 @end
 
 @implementation CustomMethodViewController
@@ -140,6 +142,26 @@
     
 }
 
+- (void)handleTapGesture:(UIGestureRecognizer *)gesture
+{
+    CGPoint loc = [gesture locationInView:self.collectionView];
+    __block BOOL isIn = YES;
+    [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (CGRectContainsPoint(obj.frame, loc)) {
+            isIn = YES;
+            return ;
+        } else {
+            isIn = NO;
+        }
+    }];
+    
+    if (!isIn) {
+        [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.layout stop:obj];
+        }];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -163,8 +185,8 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         //此处给其增加长按手势，用此手势触发cell移动效果
-//        UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlelongGesture:)];
-//        [_collectionView addGestureRecognizer:longGesture];
+        UITapGestureRecognizer *longGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+        [_collectionView addGestureRecognizer:longGesture];
         
     }
     return _collectionView;
