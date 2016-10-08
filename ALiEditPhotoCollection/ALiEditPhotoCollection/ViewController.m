@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SystemMethodViewController.h"
+#import "CustomMethodViewController.h"
 
 @interface ViewController ()
 
@@ -26,6 +27,8 @@
 }
 
 - (IBAction)customMethod:(UIButton *)sender {
+    CustomMethodViewController *customVc = [[CustomMethodViewController alloc] init];
+    [self.navigationController pushViewController:customVc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

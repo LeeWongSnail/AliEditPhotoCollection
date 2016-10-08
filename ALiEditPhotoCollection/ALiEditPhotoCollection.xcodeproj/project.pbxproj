@@ -17,6 +17,7 @@
 		EB59116C1D9BD6DF008911E8 /* ALiEditPhotoCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB59116B1D9BD6DF008911E8 /* ALiEditPhotoCollectionTests.m */; };
 		EB5911771D9BD6DF008911E8 /* ALiEditPhotoCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5911761D9BD6DF008911E8 /* ALiEditPhotoCollectionUITests.m */; };
 		EB5911871D9EAAA2008911E8 /* SystemMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */; };
+		EBF2E1271DA8A3BA0064DF15 /* CustomMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		EB5911841D9E9E40008911E8 /* ALiEditPhotoCollection-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ALiEditPhotoCollection-Prefix.pch"; sourceTree = "<group>"; };
 		EB5911851D9EAAA2008911E8 /* SystemMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMethodViewController.h; sourceTree = "<group>"; };
 		EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMethodViewController.m; sourceTree = "<group>"; };
+		EBF2E1251DA8A3BA0064DF15 /* CustomMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMethodViewController.h; sourceTree = "<group>"; };
+		EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMethodViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				EB5911511D9BD6DF008911E8 /* Supporting Files */,
 				EB5911851D9EAAA2008911E8 /* SystemMethodViewController.h */,
 				EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */,
+				EBF2E1251DA8A3BA0064DF15 /* CustomMethodViewController.h */,
+				EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */,
 			);
 			path = ALiEditPhotoCollection;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF2E1271DA8A3BA0064DF15 /* CustomMethodViewController.m in Sources */,
 				EB5911871D9EAAA2008911E8 /* SystemMethodViewController.m in Sources */,
 				EB5911591D9BD6DF008911E8 /* ViewController.m in Sources */,
 				EB5911561D9BD6DF008911E8 /* AppDelegate.m in Sources */,
