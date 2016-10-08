@@ -18,6 +18,7 @@
 		EB5911771D9BD6DF008911E8 /* ALiEditPhotoCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5911761D9BD6DF008911E8 /* ALiEditPhotoCollectionUITests.m */; };
 		EB5911871D9EAAA2008911E8 /* SystemMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */; };
 		EBF2E1271DA8A3BA0064DF15 /* CustomMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */; };
+		EBF2E1341DA8E1D10064DF15 /* ALiCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF2E1331DA8E1D10064DF15 /* ALiCollectionViewLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMethodViewController.m; sourceTree = "<group>"; };
 		EBF2E1251DA8A3BA0064DF15 /* CustomMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMethodViewController.h; sourceTree = "<group>"; };
 		EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMethodViewController.m; sourceTree = "<group>"; };
+		EBF2E1321DA8E1D10064DF15 /* ALiCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiCollectionViewLayout.h; sourceTree = "<group>"; };
+		EBF2E1331DA8E1D10064DF15 /* ALiCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiCollectionViewLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				EB5911861D9EAAA2008911E8 /* SystemMethodViewController.m */,
 				EBF2E1251DA8A3BA0064DF15 /* CustomMethodViewController.h */,
 				EBF2E1261DA8A3BA0064DF15 /* CustomMethodViewController.m */,
+				EBF2E1321DA8E1D10064DF15 /* ALiCollectionViewLayout.h */,
+				EBF2E1331DA8E1D10064DF15 /* ALiCollectionViewLayout.m */,
 			);
 			path = ALiEditPhotoCollection;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				EB5911591D9BD6DF008911E8 /* ViewController.m in Sources */,
 				EB5911561D9BD6DF008911E8 /* AppDelegate.m in Sources */,
 				EB5911531D9BD6DF008911E8 /* main.m in Sources */,
+				EBF2E1341DA8E1D10064DF15 /* ALiCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

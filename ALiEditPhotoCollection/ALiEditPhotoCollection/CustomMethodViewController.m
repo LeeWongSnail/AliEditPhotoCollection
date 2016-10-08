@@ -7,12 +7,17 @@
 //
 
 #import "CustomMethodViewController.h"
+#import "ALiCollectionViewLayout.h"
 
-@interface CustomMethodViewController () <UIGestureRecognizerDelegate>
+@interface CustomMethodViewController () <UIGestureRecognizerDelegate,ALiLayoutDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIImageView *orgImageV;
 
 @property (nonatomic, strong) UIImageView *thumbilImage;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSMutableArray *images;
 
 @end
 
@@ -24,62 +29,115 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIImageView *imageV = [[UIImageView alloc] init];
-    imageV.image = [UIImage imageNamed:@"1"];
-    [self.view addSubview:imageV];
-    [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@200);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_centerY);
+    self.title = @"随意拖动改变位置";
+    
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
     }];
     
-    imageV.userInteractionEnabled = YES;
+    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.images = [NSMutableArray array];
+    for (NSInteger i = 0; i < 20; i++) {
+        [self.images addObject:[NSString stringWithFormat:@"%tu",i]];
+    }
     
-    [imageV addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)]];
+    [self.collectionView reloadData];
     
-    
-    self.orgImageV = imageV;
+//    UIImageView *imageV = [[UIImageView alloc] init];
+//    imageV.image = [UIImage imageNamed:@"1"];
+//    [self.view addSubview:imageV];
+//    [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.height.equalTo(@200);
+//        make.centerX.equalTo(self.view.mas_centerX);
+//        make.centerY.equalTo(self.view.mas_centerY);
+//    }];
+//    
+//    imageV.userInteractionEnabled = YES;
+//    
+//    [imageV addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)]];
+//    
+//    
+//    self.orgImageV = imageV;
 }
 
-- (void)panGesture:(UIGestureRecognizer *)gesture
+//- (void)panGesture:(UIGestureRecognizer *)gesture
+//{
+//    if (gesture.state == UIGestureRecognizerStateChanged) {
+//        CGPoint point = [gesture locationInView:self.view];
+//        [self.thumbilImage mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.centerX.equalTo(self.view.mas_left).offset(point.x);
+//            make.centerY.equalTo(self.view.mas_top).offset(point.y);
+//            make.width.height.equalTo(@80);
+//        }];
+//    } else if (gesture.state == UIGestureRecognizerStateEnded){
+//        
+//    }
+//}
+
+
+//- (void)longPress:(UIGestureRecognizer *)gesture
+//{
+//    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        self.thumbilImage = [[UIImageView alloc] init];
+//        self.thumbilImage.userInteractionEnabled = YES;
+//        [self.thumbilImage addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)] ];
+//        self.thumbilImage.image = [UIImage imageNamed:@"1"];
+//        [self.view addSubview:self.thumbilImage];
+//        [self.thumbilImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.height.equalTo(@80);
+//            make.centerX.equalTo(self.view.mas_centerX);
+//            make.centerY.equalTo(self.view.mas_centerY);
+//        }];
+//        
+//        UIView *whiteCover = [[UIView alloc] init];
+//        whiteCover.backgroundColor = [UIColor whiteColor];
+//        whiteCover.alpha = 0.7;
+//        [self.orgImageV addSubview:whiteCover];
+//        [whiteCover mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(self.orgImageV);
+//        }];
+//        
+//        self.orgImageV.userInteractionEnabled = NO;
+//    }
+//}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    if (gesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint point = [gesture locationInView:self.view];
-        [self.thumbilImage mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_left).offset(point.x);
-            make.centerY.equalTo(self.view.mas_top).offset(point.y);
-            make.width.height.equalTo(@80);
-        }];
-    } else if (gesture.state == UIGestureRecognizerStateEnded){
-        
-    }
+    return 1;
 }
 
-
-- (void)longPress:(UIGestureRecognizer *)gesture
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        self.thumbilImage = [[UIImageView alloc] init];
-        self.thumbilImage.userInteractionEnabled = YES;
-        [self.thumbilImage addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)] ];
-        self.thumbilImage.image = [UIImage imageNamed:@"1"];
-        [self.view addSubview:self.thumbilImage];
-        [self.thumbilImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.equalTo(@80);
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.centerY.equalTo(self.view.mas_centerY);
-        }];
-        
-        UIView *whiteCover = [[UIView alloc] init];
-        whiteCover.backgroundColor = [UIColor whiteColor];
-        whiteCover.alpha = 0.7;
-        [self.orgImageV addSubview:whiteCover];
-        [whiteCover mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.orgImageV);
-        }];
-        
-        self.orgImageV.userInteractionEnabled = NO;
-    }
+    return self.images.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.textColor = [UIColor whiteColor];
+    label.text = self.images[indexPath.item];
+    [label sizeToFit];
+    cell.contentView.backgroundColor = [UIColor redColor];
+    [cell.contentView addSubview:label];
+    [cell.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(cell.contentView);
+    }];
+    
+    cell.backgroundColor = [UIColor redColor];
+    
+    return cell;
+}
+
+- (void)moveDataItem:(NSIndexPath*)fromIndexPath toIndexPath:(NSIndexPath*)toIndexPath
+{
+    id obj = [self.images objectAtIndex:fromIndexPath.item];
+    [self.images removeObjectAtIndex:fromIndexPath.item];
+    [self.images insertObject:obj atIndex:toIndexPath.item];
+    
 }
 
 
@@ -88,5 +146,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (UICollectionView *)collectionView{
+    if (_collectionView == nil) {
+        ALiCollectionViewLayout *layout = [[ALiCollectionViewLayout alloc] init];
+        layout.delegate = self;
+        //layout.dataSource = self;
+        layout.itemSize = CGSizeMake(50, 50);
+        layout.minimumInteritemSpacing = 1;
+        layout.minimumLineSpacing      = 1;
+        layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1);
+        layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 40.f);
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height) collectionViewLayout:layout];
+        
+        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.dataSource = self;
+        //此处给其增加长按手势，用此手势触发cell移动效果
+//        UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlelongGesture:)];
+//        [_collectionView addGestureRecognizer:longGesture];
+        
+    }
+    return _collectionView;
+}
 @end
