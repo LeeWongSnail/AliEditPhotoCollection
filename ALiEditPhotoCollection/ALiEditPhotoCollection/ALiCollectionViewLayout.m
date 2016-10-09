@@ -124,17 +124,33 @@
     }
     
     
-    //抖动效果
-    
-    [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    if (longPress.state == UIGestureRecognizerStateEnded) {
+        //抖动效果
+        CGPoint loc = [longPress locationInView:self.collectionView];
+        __block BOOL isIn = YES;
+        [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSLog(@"%tu",obj.tag);
+            CGRect rect = [obj convertRect:obj.frame toView:self.collectionView];
+            if (CGRectContainsPoint(rect, loc)) {
+                isIn = YES;
+                *stop = YES;
+            } else {
+                isIn = NO;
+            }
+        }];
         
-        CABasicAnimation *animation = (CABasicAnimation *)[obj.layer animationForKey:@"rotation"];
-        if (animation == nil) {
-            [self shakeView:obj];
-        }else {
-            [self resume:obj];
+        if (isIn) {
+            [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                CABasicAnimation *animation = (CABasicAnimation *)[obj.layer animationForKey:@"rotation"];
+                if (animation == nil) {
+                    [self shakeView:obj];
+                }else {
+                    [self resume:obj];
+                }
+            }];
         }
-    }];
+        
+    }
 }
 
 

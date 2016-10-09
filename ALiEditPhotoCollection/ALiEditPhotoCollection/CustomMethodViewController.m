@@ -118,7 +118,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    cell.tag = 10000+indexPath.item;
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor whiteColor];
     label.text = self.images[indexPath.item];
@@ -170,16 +170,16 @@
 
 - (UICollectionView *)collectionView{
     if (_collectionView == nil) {
-        ALiCollectionViewLayout *layout = [[ALiCollectionViewLayout alloc] init];
-        layout.delegate = self;
+        self.layout = [[ALiCollectionViewLayout alloc] init];
+        self.layout.delegate = self;
         //layout.dataSource = self;
-        layout.itemSize = CGSizeMake(50, 50);
-        layout.minimumInteritemSpacing = 1;
-        layout.minimumLineSpacing      = 1;
-        layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1);
-        layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 40.f);
+        self.layout.itemSize = CGSizeMake(100, 100);
+        self.layout.minimumInteritemSpacing = 1;
+        self.layout.minimumLineSpacing      = 1;
+        self.layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1);
+        self.layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 40.f);
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height) collectionViewLayout:self.layout];
         
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
         _collectionView.backgroundColor = [UIColor whiteColor];
